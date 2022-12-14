@@ -14,5 +14,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    $helloWorld = "Hello World";
+    return view('home', compact("helloWorld"));
+})->name("landing");
+
+Route::get('/team', function () {
+    $data = [
+        "title" => "Chi siamo",
+        "team" => [
+            "Giovanni",
+            "Luigi",
+            "Giorgio",
+            "Valentina"
+        ],
+        "teachers" => []
+    ];
+    return view('about', $data);
+})->name("about");
